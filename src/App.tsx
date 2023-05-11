@@ -1,13 +1,69 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { Link, NavLink, Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
+import { Counter } from './features/counter/Counter';
+import logo from './logo.svg';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className='App'>
+      {/* Routes nest inside one another. Nested route paths build upon
+            parent route paths, and nested route elements render inside
+            parent route elements. See the note about <Outlet> below. */}
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path='about' element={<About />} />
+          <Route path='dashboard' element={<Dashboard />} />
+          {/* Using path="*"" means "match anything", so this route
+                acts like a catch-all for URLs that we don't have explicit
+                routes for. */}
+          <Route path='*' element={<NoMatch />} />
+        </Route>
+      </Routes>
+    </div>
+  );
+}
+
+function Layout() {
+  return (
+    <div>
+      {/* A "layout route" is a good place to put markup you want to
+          share across all the pages on your site, like navigation. */}
+      <nav>
+        <ul>
+          <li>
+            <NavLink to='/'>Home</NavLink>
+          </li>
+          <li>
+            <NavLink to='/about'>About</NavLink>
+          </li>
+          <li>
+            <NavLink to='/dashboard'>Dashboard</NavLink>
+          </li>
+          <li>
+            <NavLink to='/nothing-here'>Nothing Here</NavLink>
+          </li>
+        </ul>
+      </nav>
+
+      <hr />
+
+      {/* An <Outlet> renders whatever child route is currently active,
+          so you can think about this <Outlet> as a placeholder for
+          the child routes we defined above. */}
+      <div className='Layout'>
+        <Outlet />
+      </div>
+    </div>
+  );
+}
+
+function Home() {
+  return (
+    <div>
+      <h2>Home</h2>
+      <header className='App-header'>
+        <img src={logo} className='App-logo' alt='logo' />
         <Counter />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -15,37 +71,37 @@ function App() {
         <span>
           <span>Learn </span>
           <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
+            className='App-link'
+            href='https://reactjs.org/'
+            target='_blank'
+            rel='noopener noreferrer'
           >
             React
           </a>
           <span>, </span>
           <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
+            className='App-link'
+            href='https://redux.js.org/'
+            target='_blank'
+            rel='noopener noreferrer'
           >
             Redux
           </a>
           <span>, </span>
           <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
+            className='App-link'
+            href='https://redux-toolkit.js.org/'
+            target='_blank'
+            rel='noopener noreferrer'
           >
             Redux Toolkit
           </a>
           ,<span> and </span>
           <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
+            className='App-link'
+            href='https://react-redux.js.org/'
+            target='_blank'
+            rel='noopener noreferrer'
           >
             React Redux
           </a>
@@ -55,4 +111,29 @@ function App() {
   );
 }
 
-export default App;
+function About() {
+  return (
+    <div>
+      <h2>About</h2>
+    </div>
+  );
+}
+
+function Dashboard() {
+  return (
+    <div>
+      <h2>Dashboard</h2>
+    </div>
+  );
+}
+
+function NoMatch() {
+  return (
+    <div>
+      <h2>Nothing to see here!</h2>
+      <p>
+        <Link to='/'>Go to the home page</Link>
+      </p>
+    </div>
+  );
+}
