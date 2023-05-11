@@ -6,6 +6,10 @@
   text-align: center;
 }
 
+ul {
+  text-align: left;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -27,6 +31,11 @@
 
 .App-link {
   color: rgb(112, 76, 182);
+}
+
+.fun-button {
+  background: black;
+  color: yellow;
 }
 
 @keyframes App-logo-float {

@@ -1,5 +1,6 @@
 import { Link, NavLink, Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
+import MyFunComponent from './components/MyFunComponent/MyFunComponent';
 import { Counter } from './features/counter/Counter';
 import logo from './logo.svg';
 
@@ -61,7 +62,7 @@ function Layout() {
 function Home() {
   return (
     <div>
-      <h2>Home</h2>
+      <h1>Home</h1>
       <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
         <Counter />
@@ -114,7 +115,7 @@ function Home() {
 function About() {
   return (
     <div>
-      <h2>About</h2>
+      <h1>About</h1>
     </div>
   );
 }
@@ -122,7 +123,8 @@ function About() {
 function Dashboard() {
   return (
     <div>
-      <h2>Dashboard</h2>
+      <h1>Dashboard</h1>
+      <MyFunComponent />
     </div>
   );
 }
@@ -130,7 +132,7 @@ function Dashboard() {
 function NoMatch() {
   return (
     <div>
-      <h2>Nothing to see here!</h2>
+      <h1>Nothing to see here!</h1>
       <p>
         <Link to='/'>Go to the home page</Link>
       </p>
