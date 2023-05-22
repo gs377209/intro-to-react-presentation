@@ -1,6 +1,7 @@
 import { Link, NavLink, Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
 import MyFunComponent from './components/MyFunComponent/MyFunComponent';
+import MyHookComponent from './components/MyHookComponent/MyHookComponent';
 import { Counter } from './features/counter/Counter';
 import logo from './logo.svg';
 
@@ -15,6 +16,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path='about' element={<About />} />
           <Route path='dashboard' element={<Dashboard />} />
+          <Route path='hooks' element={<Hooks />} />
           {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
                 routes for. */}
@@ -40,6 +42,9 @@ function Layout() {
           </li>
           <li>
             <NavLink to='/dashboard'>Dashboard</NavLink>
+          </li>
+          <li>
+            <NavLink to='/hooks'>Hooks</NavLink>
           </li>
           <li>
             <NavLink to='/nothing-here'>Nothing Here</NavLink>
@@ -125,6 +130,15 @@ function Dashboard() {
     <div>
       <h1>Dashboard</h1>
       <MyFunComponent />
+    </div>
+  );
+}
+
+function Hooks() {
+  return (
+    <div>
+      <h1>Hooks</h1>
+      <MyHookComponent />
     </div>
   );
 }
