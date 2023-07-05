@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.1.1 (2023-07-05)
+
+- Updates (patch)
+
 ## v3.1.0 (2023-06-27)
 
 - Minor updates
