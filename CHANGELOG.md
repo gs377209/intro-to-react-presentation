@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.2.0 (2023-07-11)
+
+- Update dependencies (minor)
+
 ## v3.1.1 (2023-07-05)
 
 - Updates (patch)
